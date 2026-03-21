@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_project_initiative_sections",
+  "info": {
+    "displayName": "Initiative Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}
