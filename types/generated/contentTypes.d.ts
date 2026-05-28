@@ -430,6 +430,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiKeywordKeyword extends Struct.CollectionTypeSchema {
+  collectionName: 'keywords';
+  info: {
+    displayName: 'Keywords';
+    pluralName: 'keywords';
+    singularName: 'keyword';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::keyword.keyword'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProjectAreaProjectArea extends Struct.CollectionTypeSchema {
   collectionName: 'project_areas';
   info: {
@@ -504,6 +533,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project-area.project-area'
     >;
     client: Schema.Attribute.String;
+    cliente: Schema.Attribute.String;
     coverImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -518,22 +548,27 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios'
     >;
     initiative: Schema.Attribute.Component<'project.initiative-section', false>;
+    keywords: Schema.Attribute.Relation<'manyToMany', 'api::keyword.keyword'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::project.project'
     > &
       Schema.Attribute.Private;
+    metatag: Schema.Attribute.Component<'project.metatag', false>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.Component<'project.project-section', true>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    sottotitolo: Schema.Attribute.String;
     subtitle: Schema.Attribute.String;
     tags: Schema.Attribute.Relation<
       'manyToMany',
       'api::project-tag.project-tag'
     >;
+    tipologia: Schema.Attribute.String;
     tipology: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titolo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1052,6 +1087,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::keyword.keyword': ApiKeywordKeyword;
       'api::project-area.project-area': ApiProjectAreaProjectArea;
       'api::project-tag.project-tag': ApiProjectTagProjectTag;
       'api::project.project': ApiProjectProject;

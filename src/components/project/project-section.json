@@ -5,9 +5,16 @@
   },
   "options": {},
   "attributes": {
+    "titolo": {
+      "type": "string",
+      "required": true
+    },
     "title": {
       "type": "string",
       "required": true
+    },
+    "testo": {
+      "type": "string"
     },
     "text": {
       "type": "blocks"

@@ -21,26 +21,21 @@
         "audios"
       ]
     },
-    "title": {
-      "type": "string",
-      "required": true
-    },
     "slug": {
       "type": "uid",
       "targetField": "title",
       "required": true
     },
-    "subtitle": {
-      "type": "string"
+    "keywords": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::keyword.keyword",
+      "mappedBy": "projects"
     },
-    "year": {
-      "type": "string"
-    },
-    "client": {
-      "type": "string"
-    },
-    "tipology": {
-      "type": "string"
+    "metatag": {
+      "type": "component",
+      "component": "project.metatag",
+      "repeatable": false
     },
     "headerImage": {
       "type": "media",
@@ -51,6 +46,47 @@
         "videos",
         "audios"
       ]
+    },
+    "titolo": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "sottotitolo": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    },
+    "cliente": {
+      "type": "string"
+    },
+    "client": {
+      "type": "string"
+    },
+    "tipologia": {
+      "type": "string"
+    },
+    "tipology": {
+      "type": "string"
+    },
+    "areas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project-area.project-area",
+      "inversedBy": "projects"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project-tag.project-tag",
+      "inversedBy": "projects"
     },
     "initiative": {
       "type": "component",
@@ -71,18 +107,6 @@
         "videos",
         "audios"
       ]
-    },
-    "areas": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project-area.project-area",
-      "inversedBy": "projects"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project-tag.project-tag",
-      "inversedBy": "projects"
     }
   }
 }

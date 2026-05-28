@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_project_initiative_sections",
+  "collectionName": "components_project_metatags",
   "info": {
-    "displayName": "Initiative Section"
+    "displayName": "Metatag"
   },
   "options": {},
   "attributes": {
@@ -11,10 +11,10 @@
     "title": {
       "type": "string"
     },
-    "testo": {
+    "descrizione": {
       "type": "blocks"
     },
-    "text": {
+    "description": {
       "type": "blocks"
     }
   },
