@@ -34,7 +34,7 @@ export interface ProjectProjectSection extends Struct.ComponentSchema {
   attributes: {
     imagePosition: Schema.Attribute.Enumeration<['left', 'right']>;
     media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    testo: Schema.Attribute.String;
+    testo: Schema.Attribute.Blocks;
     text: Schema.Attribute.Blocks;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     titolo: Schema.Attribute.String & Schema.Attribute.Required;

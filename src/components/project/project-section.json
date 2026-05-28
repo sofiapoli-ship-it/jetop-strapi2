@@ -14,7 +14,7 @@
       "required": true
     },
     "testo": {
-      "type": "string"
+      "type": "blocks"
     },
     "text": {
       "type": "blocks"
